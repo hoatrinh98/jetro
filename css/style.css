@@ -1,0 +1,226 @@
+/* chu tieu de */
+@font-face {
+    font-family: "Bebas";
+    src: url(fonts/Bebas.ttf);
+}
+@font-face {
+    font-family: "Helve";
+    src: url(fonts/Helve.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:content-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #414141
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    /* chỉnh chiều ngang tất cả ảnh theo khung màn hình */
+}
+main .banner {
+    position: relative;
+}
+main .banner .next {
+    position: absolute;
+    top: 150px;
+    right: 30px;
+}
+main .banner :hover, main .banner .next:hover {
+    opacity: 0.5;
+}
+/* slide_one index.html */
+main .banner .slide_one {
+    position: absolute;
+    width: 400px;
+    padding: 20px;
+    color: #fff;
+    background: rgba(232, 96, 60, 0.8);
+    bottom: 40px;
+    left: 40px;
+}
+main .banner .slide_one h2 {
+    font-size: 18px;
+    font-family: "Bebas";
+    font-weight: normal;
+    margin: 0 0 15px;
+}
+main .banner .slide_one p {
+    font-size: 12px;
+}
+/* item img index.html */
+main .itemImgIndex {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 20px;
+    padding: 15px 0;
+}
+/* item paragraph index.html */
+main .itemParaph {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 15px 0;
+}
+main .itemParaph img {
+    float: left;
+}
+main .itemParaph h2 {
+    color: #e8663c;
+    font-size: 16px;
+    font-family: "Bebas";
+    line-height: 30px;
+    font-weight: normal;
+    margin: 0 0 15px 70px;
+}
+main .itemParaph p {
+    margin-bottom: 20px;
+}
+main .itemParaph button {
+    border: none;
+    background: #e8663c;
+    color: #fff;
+    padding: 9px 15px;
+    font-size: 12px;
+    font-family: "Bebas";
+}
+/* title2 index.html, portofolioitem.html */
+main .title {
+    background: url(../img/heading-bg.png) repeat-x;
+    margin-left: 140px;
+    margin-top: 50px;
+}
+main .title span {
+    color: #e8663c;
+    font-size: 18px;
+    font-family: "Bebas";
+    margin-left: -140px;
+    padding-top: 3px;
+    display: block;
+}
+/* item  title2 index.html, portofolioitem */
+main .recent-works {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    padding: 30px 0;
+}
+main .recent-works .blog-post-meta {
+    margin-top: -5px;
+    border-bottom: 1px solid #DDDDDD;
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+    padding: 15px 0 0 25px;
+}
+main .recent-works h3 {
+    color: #999;
+    font-size: 16px;
+    margin-bottom: 2px;
+    font-family: "Bebas";
+    font-weight: normal;
+}
+main .recent-works h4 {
+    color: #e8663c;
+    font-size: 11px;
+    font-family: "Bebas";
+    font-weight: normal;
+    margin: 0 0 15px;
+}
+
+#post {
+    border-collapse : collapse;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+#post td, #post th {
+    border: 1px solid #ddd;
+    padding: 8px;
+
+}
+
+#post tr:ntn-child(event){
+    background-color: #f2f2f2;
+}
+#post tr:hover{
+    background-color: #ddd;
+}
+#post th{
+    text-align: left;
+    background-color: grey;
+    color: white;
+}
+
+/* portfolio.html */
+/* menu categories  */
+main .categories {
+    margin-bottom: 60px;
+}
+main .categories ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+main .categories li {
+    padding: 5px;
+}
+main .categories li:first-child {
+    font-size: 20px;
+    font-family: "Bebas";
+    padding: 10px 15px 10px 0;
+}
+main .categories li a {
+    color: #999;
+    padding: 13px 15px;
+    font-family: "Bebas";
+}
+main .categories li a:hover, main .categories li a.active {
+    background: #e8663c;
+    color: #fff;
+}
+
+main .itemImgPortfolio {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 25px 10px;
+}
+main .itemImgPortfolio img {
+    padding: 1px;
+    border: 1px solid #d5d5d5;
+}
+main .itemImgPortfolio img:hover {
+    border: 1px solid #E8663C;
+    box-shadow:0 0 5px #E8663C;
+}
+main .itemImgPortfolio .text {
+    padding: 3px 10px;
+    margin-top: -4px;
+    border: 1px solid #d5d5d5;
+}
+main .itemImgPortfolio .text h2 a {
+    font-size: 16px;
+    font-family: "Bebas";
+    /* color: #414141; */
+}
+main .itemImgPortfolio .text h2 a:hover {
+    color: #65a42d;
+}
+main .itemImgPortfolio .text p {
+    font-size: 11px;
+    font-family: "Bebas";
+    color: #E8603C;
+    margin: 5px 0 20px;
+} 

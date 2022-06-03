@@ -1,0 +1,78 @@
+main .contact {
+    display: flex;
+    justify-content: space-between;
+}
+main .contact-map {
+    width: 70%;
+}
+main .main-content p {
+    margin-bottom: 20px;
+}
+main .contact-content {
+    width: 25%;
+}
+main .contact-content .title {
+    font-family: "Bebas";
+    margin-top: 0;
+    color: #e8663c;
+    font-size: 20px;
+    background: url(../img/heading-bg.png);
+    background-repeat: repeat-x;
+    background-position: right;
+}
+main .contact-content p {
+    margin: 20px 0 40px 0;
+}
+main .contact-content .gallery {
+    margin-top: 20px;
+}
+main .flex .main form {
+    padding: 20px 0 30px 0;
+}
+.contact .register{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+.register .text{
+    width: 30%;
+    margin-left: 5px;
+}
+.text span{
+    color: #e8663c;
+    font-size: 16px;
+}
+.register .form{
+    width: 65%;
+}
+.register .form label {
+    display: block;
+    padding: 6px 0;
+}
+.register .form .inputdata {
+    border: 1px solid #ce5454;
+    background: #fafafa;
+    padding: 10px;
+    width: 450px;
+}
+.register .form input{
+    height: 50px;
+    vertical-align: bottom;
+    line-height: 50px;
+}
+.register .form .inputdata::placeholder{
+    color: #e8663c;
+    font-family: "Bebas";
+    font-size: 20px;
+}
+.register .form .inputdata textarea {
+    width: 450px;
+}
+.register .form button {
+    padding: 10px 31px;
+    color: #ffff;
+    border: 1px solid #ce5454 ;
+    background-color: #e8663c;
+    font-size: 20px;
+}
+

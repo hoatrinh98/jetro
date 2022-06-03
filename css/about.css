@@ -1,0 +1,103 @@
+main .about {
+    display: flex;
+    justify-content: space-between;
+}
+main .main-content {
+    width: 70%;
+}
+main .main-content img {
+    border: 1px solid #dddddd;
+    float: left;
+    padding: 3px;
+    margin: 5px 20px 20px 0;
+}
+main .main-content p.letter::first-letter {
+    color: #e8663c;
+    font-weight: bold;
+    font-size: 35px;
+    margin: 7px 10px 7px 0;
+    float: left;
+}
+main .main-content p.quote {
+    margin: 30px 0 30px 30px;
+    border-left: 10px solid #e8663c;
+    padding-left: 15px;
+    font-style: italic;
+
+}
+main .main-content .column-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50px;
+}
+main .main-content .column-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+main .main-content .alert-text-1 {
+    background: #effeb9;
+    border: 1px solid #9bc70b;
+    border-radius: 2px;
+    color: #a5cc20;
+    font-size: 16px;
+    font-style: italic;
+    padding: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+main .main-content .alert-text-2 {
+    background: #fbcbc1;
+    border: 1px solid #ed644b;
+    border-radius: 2px;
+    color: #ec5c44;
+    font-size: 16px;
+    font-style: italic;
+    padding: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+main .main-content .alert-text-3 {
+    background: #ffe9ad;
+    border: 1px solid #f9b720;
+    border-radius: 2px;
+    color: #f9b720;
+    font-size: 16px;
+    font-style: italic;
+    padding: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+main .main-content .alert-text-4 {
+    background: #d1e4f3;
+    border: 1px solid #609bd1;
+    border-radius: 2px;
+    color: #5392cc;
+    font-size: 16px;
+    font-style: italic;
+    padding: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+main .main-content p {
+    margin-bottom: 20px;
+}
+main .side-content {
+    width: 25%;
+}
+main .side-content .title {
+    font-family: "Bebas";
+    margin-top: 0;
+    color: #e8663c;
+    font-size: 20px;
+    background: url(../img/heading-bg.png);
+    background-repeat: repeat-x;
+    background-position: right;
+}
+main .side-content p {
+    margin: 20px 0 40px 0;
+}
+main .side-content .gallery {
+    margin-top: 20px;
+}
