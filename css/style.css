@@ -138,30 +138,7 @@ main .recent-works h4 {
     margin: 0 0 15px;
 }
 
-#post {
-    border-collapse : collapse;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
-#post td, #post th {
-    border: 1px solid #ddd;
-    padding: 8px;
 
-}
-
-#post tr:ntn-child(event){
-    background-color: #f2f2f2;
-}
-#post tr:hover{
-    background-color: #ddd;
-}
-#post th{
-    text-align: left;
-    background-color: grey;
-    color: white;
-}
 
 /* portfolio.html */
 /* menu categories  */
