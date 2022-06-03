@@ -9,11 +9,11 @@
 <div class="container col-lg-10 mx-auto">
     <div class="d-flex justify-content-start py-3">
         <ul class="nav nav-pills">
-          <li class="nav-item"><a href="userList.php" class="nav-link active" aria-current="page">Manager</a></li>
-          <li class="nav-item"><a href="userList.php" class="nav-link">Users</a></li>
-          <li class="nav-item"><a href="../news/PageAdmin.php" class="nav-link">News</a></li>
-          <li class="nav-item"><a href="../categories/categoryList.php" class="nav-link">Categories</a></li>
-          <li class="nav-item"><a href="../contact/contactList.php" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="./userList.php" class="nav-link active" aria-current="page">Manager</a></li>
+          <li class="nav-item"><a href="./userList.php" class="nav-link">Người Dùng</a></li>
+          <li class="nav-item"><a href="./postListCenship.php" class="nav-link">Đăng Bài</a></li>
+          <li class="nav-item"><a href="./categoryList.php" class="nav-link">Danh Mục</a></li>
+          <li class="nav-item"><a href="./postListAdmin.php" class="nav-link">Bài Viết</a></li>
         </ul>
       </div>
     <div class="content">
@@ -29,7 +29,6 @@
             <th scope="col">Phone Number</th>
             <th scope="col">Gender</th>
             <th scope="col">Password</th>
-            <th scope="col">Update</th>
             <th scope="col">Delete</th>
             </tr>
         </thead>
@@ -62,11 +61,7 @@
                     ?>
                 </td>
                 <td><?php echo $value['password_current'] ?></td>
-                <td>
-                    <a href="userUpdate.php?userId=<?php echo $value['id'] ?>">
-                    <button class="btn btn-secondary">Sửa</button>
-                    </a>
-                </td>
+                
                 <td>
                     <a href="userDelete.php?userId=<?php echo $value['id'] ?>" onclick="return confirm ('Bạn có chắc chắn muốn xóa không')">
                     <button class="btn btn-danger">Xoá</button>
