@@ -8,7 +8,7 @@ class Database
 	protected $host 			= 'localhost';
 	protected $username 		= 'root';
 	protected $password 		= '';
-	protected $dbname 			= 'hoatrinh';
+	protected $dbname 			= 'zerotype';
 
 	public function __construct() {}
 

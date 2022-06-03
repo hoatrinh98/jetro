@@ -1,4 +1,4 @@
-<?php include '../include/header.php' ?>
+<?php include('../include/header.php') ?>
 <div class="container col-lg-7 mx-auto">
 	<div id="contents">
 		<div id="about">
@@ -25,19 +25,21 @@
 				<label>Nội dung bài viết</label><br>
 				<textarea style="width: 100%; height: 150px" name="txt-content"></textarea>
 
+                <label style="margin: 0px 5px 0px 50px" ><b>Ảnh bài viết</b></label>
+                <img style="margin: 10px 20px 0px 50px"  src= "../img/avatar/Mai.jpeg" alt="avatar" width="200px" height="200px"> 
                 <input 
                     type="file" 
                     class="form-control"  
                     accept="image/*" 
                     name="image" 
                     id="file"  
-                    onchange="loadFile(event)" 
+                    onchange="loadFile(event)"
                     style="display: none;">
-                <label for="file" style="cursor: pointer; margin: 0px 5px 0px 150px "><b>Hình ảnh bài viết</b></label>
-                <img style="margin-top: 10px" id="output" width="250" height="250px" />
+                <label for="file" style="cursor: pointer;"><b>Ảnh mới</b></label>
+                <img style="margin-top: 10px" id="output" width="200" height="200px" /> <br>
 
-                <input style="margin:25px 375px; width: 100px; height: 50px; background-color: #e8663c; border: 0px; border-radius: 5px;" 
-                        type="submit"name="sub-register" value="Đăng ký">
+                <input style=" width: 10rem; height: 2.5rem; margin: 10px 50px 0px 250px;" type="submit" name="sub-update" value="Save">
+                <input style=" width: 10rem; height: 2.5rem;" type="submit"name="sub-exit" value="Exit">
 
             </form>
 			
@@ -45,4 +47,10 @@
 	</div>
 
 </div>
-<?php include '../include/footer.php' ?>
+<script>
+        var loadFile = function(event) {
+	    var image = document.getElementById('output');
+	    image.src = URL.createObjectURL(event.target.files[0]);
+        };
+</script>
+<?php include('../include/footer.php') ?>
