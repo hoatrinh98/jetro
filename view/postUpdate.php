@@ -8,8 +8,8 @@
 
             <label>Tên tác giả</label>
                 <input type="text" name="shop-name" class="form-control" style ="display:none"
-                    value="<?php?>" required />
-                <input type="text" class="form-control" value="<?php?>" disabled /> 
+                    value="" required />
+                <input type="text" class="form-control" value="" disabled /> 
 
                 <label>Danh mục bài viết</label><br>
                 <select name = "gender" style="width:100%; height:38px; border:1px solid #ced4da; border-radius: 0.25rem; " class="form-select" aria-label="Default select example">

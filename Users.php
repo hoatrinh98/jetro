@@ -1,5 +1,4 @@
 <?php
-    include ('connect.php');
     class User extends Database{
             function isDigits(string $s, int $minDigits = 9, int $maxDigits = 14): bool 
         {
@@ -72,6 +71,7 @@
             $email = trim($data['email']);
             $phone = trim($data['phone']);
             $pass = trim($data['password']);
+            $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
             $gender = trim($data['gender']);
 
             if(empty($name) || empty($email) || empty($fullName) || empty($phone) || empty($pass) || empty($gender)){
@@ -98,9 +98,9 @@
                 return;
             }
 
-            if(!isset($_FILES['image'])){
-                return 'File ảnh không tồn tại !';
-            }
+            // if(!isset($_FILES['image'])){
+            //     return 'File ảnh không tồn tại !';
+            // }
             $upAvatar = $this->uploadAvatar($name);
                 if (strlen($upAvatar) > 0) {
                     echo "<script>alert('" . $upAvatar . "')</script>";
@@ -117,6 +117,7 @@
                 'email'                 => $email,
                 'num_phone'             => $phone,
                 'image'                 => $image,
+                'password_hash'         =>$pass_hash,
                 'gender'                => $gender,
                 'permission'            => 1,
             ];
@@ -124,7 +125,10 @@
             $insert = $this->insert('users', $user);
 
             if($insert){
-                echo '<script>alert("Register is SUCCESS !")</script>';
+                echo '<script>alert("Register is SUCCESS !");
+                        window.location = ("userLogin.php");
+                        </script>';
+                // echo '<script></script>';
                 return;
             }
             else{
@@ -183,10 +187,10 @@
                 return;
             }
 
-            // if(count($this->getInfoByNumPhone($phone)) > 0) {
-            //     echo '<script>alert("Number phone is exists !")</script>';
-            //     return;
-            // }
+            if(count($this->getInfoByNumPhone($phone)) > 1) {
+                echo '<script>alert("Number phone is exists !")</script>';
+                return;
+            }
 
             $upAvatar = $this->uploadAvatar($name);
                 if (strlen($upAvatar) > 0) {
@@ -246,11 +250,24 @@
                 ];
             }
             $_SESSION['role'] = $numP[0]['permission'];
-            // $_SESSION['username'] = $numP[0]['permission'];
+            $_SESSION['username'] = $numP[0]['username'];
             $_SESSION['id'] = $numP[0]['id'];
+            $_SESSION['avatar'] = $numP[0]['image'];
 
-            echo '<script>alert("Login success !!!"); window.location="./page1.php";</script>';
+            echo '<script>alert("Login success !!!"); window.location="./index.php";</script>';
                 return;
+        }
+
+        public function logout()
+        {
+            session_destroy();
+            // var_dump($_SESSION);
+            if(!isset($_SESSION['role'])){
+                echo '<script>alert("Đăng xuất thành công");</script>';
+                echo '<script>window.location="index.php";</script>';
+                return;
+            }
+
         }
 
     }
