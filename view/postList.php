@@ -31,23 +31,23 @@
                 $i = 1;
                 foreach($posts as $post):
             ?>
-
-                <th><?php echo $i++ ?></th>
-                <th>ảnh</th>
-                <th><?php echo $post['user_name'] ?></th>
-                <th><?php echo $post['category_name'] ?></th>
-                <th><?php echo $post['title'] ?></th>
-                <th><?php echo strlen($post['content']) < 100 ? $post['content'] : substr($post['content'],0,100) . "..." ?></th>
-                <th><?php echo $post['create_at'] ?></th>
+<tr>
+                <td><?php echo $i++ ?></td>
+                <td>ảnh</td>
+                <td><?php echo $post['user_name'] ?></td>
+                <td><?php echo $post['category_name'] ?></td>
+                <td><?php echo $post['title'] ?></td>
+                <td><?php echo strlen($post['content']) < 100 ? $post['content'] : substr($post['content'],0,100) . "..." ?></td>
+                <td><?php echo $post['create_at'] ?></td>
                 <?php if($post['status'] == 0): ?>
-                    <th><a href="">Đăng bài</a></th>
+                    <td><a href="./postBV.php?id=<?php echo $post['post_id'] ?>">Đăng bài</a></td>
                 <?php elseif($post['status'] == 1):  ?>
-                    <th><a href="">Đã Đăng</a></th>
+                    <td><a href="">Đã Đăng</a></td>
                 <?php else: ?>
                 <?php endif; ?>
-                <th><a href="">Sửa</a></th>
-                <th><a href="">Xóa</a></th>
-
+                <td><a href="">Sửa</a></td>
+                <td><a href="">Xóa</a></td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>

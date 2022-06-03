@@ -1,10 +1,20 @@
-<?php include('../include/header.php');
+<?php 
+include('../include/header.php');
+include '../Categories.php';
+include('../Posts.php');
+
+$category = new Categories();
+$categories = $category->getCategoryList();
+global $i;
+$i = 1;
+
+
     if(!(isset($_SESSION['role']) && $_SESSION['role'] == 2)){
         echo '<script>alert("Bạn không có quyền truy cập đến trang này");</script>';
         echo '<script>window.location= "index.php";</script>';
     }
 
-    include('../Posts.php');
+  
     
     $get_data = new Post();
     $categories = $get_data->getInfoCategories();
@@ -20,16 +30,30 @@
         </ul>
       </div>
     <div class="content">
-    <h1>User List</h1>
+    <h1>Category List</h1>
         <table class="table table-bordered">
         <thead>
             <tr>
             <th scope="col">STT</th>
-            <th scope="col">Tên danh mục</th>
-            <th scope="col">Mô tả danh mục</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+
             </tr>
         </thead>
         <tbody>
+            <?php foreach($categories as $category): ?>
+                <tr>
+                    <td><?php echo $i; ?></td>
+                    <td><?php echo $category['name'] ?></td>
+                    <td><?php echo strlen($category['description']) < 300 ? $category['description'] : substr($category['description'], 0, 300) . " ... "  ; $i++; ?></td>
+                    <td><a href="./categoryUpdate.php?category-id=<?php echo $category['id'] ?>">Update</a></td>
+                    <td><a href="./categoryDelete.php?category-id=<?php echo $category['id'] ?>">Delete</a></td>
+
+                </tr>
+            <?php endforeach; ?>
+            
                 
         </tbody>
     </table>

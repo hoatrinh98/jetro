@@ -15,6 +15,12 @@ class Categories extends Database
         return count($this->get_data($query)) ? true : false;
     }
 
+    public function checkExistCategoryNameInUpdate(string $name):bool
+    {
+        $query = " SELECT id FROM categories WHERE name = '" . $name . "';";
+        return count($this->get_data($query)) > 1 ? true : false;
+    }
+
     /**
      * createCategory
      *
@@ -47,7 +53,7 @@ class Categories extends Database
                 'description' => $description
             ];
         }
-        echo '<script>alert("Create category new success !"); window.location="category_list.php";</script>';
+        echo '<script>alert("Create category new success !"); window.location="categoryList.php";</script>';
         return [];
     }
 
@@ -57,12 +63,11 @@ class Categories extends Database
         return count($this->get_data($query)) ? true : false;
     }
 
-    public function updateCategory($name, $description)
+    public function updateCategory($description)
     {
         $isUpdate = $this->update(
             'categories', 
             [
-                'name' => $name,
                 'description' => $description
             ],
             'id = ' . $_GET['category-id']
@@ -70,11 +75,10 @@ class Categories extends Database
         if(!$isUpdate) {
             echo '<script>alert("Update category fail !")</script>';
             return [
-                'name' => $name,
                 'description' => $description
             ];
         }
-        echo '<script>alert("Update category success !")</script>';
+        echo '<script>alert("Update category success !"); window.location="./categoryList.php"</script>';
         return [];
     }
 
@@ -87,17 +91,28 @@ class Categories extends Database
     public function deleteCategoryById()
     {
         if(!$this->checkExistCategoryId($_GET['category-id'])) {
-            echo '<script>alert("Category not exist !")</script>';
+            echo '<script>alert("Category not exist !"); window.location="./categoryList.php"</script>';
             return;
         }
 
         if($this->checkCategoryHasPost($_GET['category-id'])) {
-            echo '<script>alert("You do not delete, have post in category !")</script>';
+            echo '<script>alert("You do not delete, have post in category !"); window.location="./categoryList.php"</script>';
             return;
         }
-
-        echo '<script>alert("Delete category success !")</script>';
+        $this->delete('categories', 'id = '. $_GET['category-id']);
+        echo '<script>alert("Delete category success !"); window.location="./categoryList.php"</script>';
         return;
+    }
+
+    public function getCategoryList()
+    {
+        return $this->get_data("SELECT * FROM categories");
+    }
+
+    public function getInfoCategoryById($id)
+    {
+        return $this->get_data("SELECT * FROM categories WHERE id = " . $id);
+
     }
 
 

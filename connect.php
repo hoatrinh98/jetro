@@ -1,14 +1,12 @@
 <?php 
-if(!isset($_SESSION)) { 
-    session_start(); 
-} 
+ 
 class Database
 {
 	protected $_connection 		= null;
 	protected $host 			= 'localhost';
 	protected $username 		= 'root';
 	protected $password 		= '';
-	protected $dbname 			= 'zerotype';
+	protected $dbname 			= 'HoaTrinh';
 
 	public function __construct() {}
 

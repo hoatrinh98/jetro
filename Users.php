@@ -1,5 +1,4 @@
 <?php
-    include ('connect.php');
     class User extends Database{
             function isDigits(string $s, int $minDigits = 9, int $maxDigits = 14): bool 
         {
