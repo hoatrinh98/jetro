@@ -1,6 +1,41 @@
 <?php
 include ('connect.php');
-class Post extends Database{
+class Post extends Database
+{
+    public function getCategoryIdByPost($id)
+    {
+        return $this->get_data("SELECT category_id FROM posts WHERE id = " . $id)[0];
+    }
+
+    public function getPostByCategory()
+    {
+        $query = " SELECT * FROM posts P WHERE category_id = " . $this->getCategoryIdByPost($_GET['id'])['category_id'];
+        return $this->get_data($query);
+    }
+
+    public function getPostsNewMost()
+    {
+        $query = " SELECT * FROM posts WHERE status = 1 ORDER BY create_at DESC LIMIT 3 ";
+        return $this->get_data($query);
+    }
+
+    public function getPostsView()
+    {
+        $query = " SELECT * FROM posts WHERE status = 1 ORDER BY count_view DESC LIMIT 4 ";
+        return $this->get_data($query);
+    }
+
+    //dang bai viet
+    public function postNew()
+    {
+        $isUpdate = $this->update('posts', ['status' => 1], 'id = ' . $_GET['id']);
+        if(!$isUpdate) {
+            echo '<script>alert("Đăng bán thất bại")</script>';
+            return;
+        }
+        echo '<script>alert("Đăng bán thành công"); window.location="postList.php";</script>';
+            return;
+    }
 
     public function getInfoUserById()
     {
@@ -12,7 +47,7 @@ class Post extends Database{
     public function getInfoPostByUserId()
     {
         $sql = "SELECT c.id 'category_id', c.name 'category_name', u.id 'user_id', u.username 'user_name', 
-                p.id, p.title, p.content, p.count_view, p.create_at, p.status
+                p.id post_id, p.title, p.content, p.count_view, p.create_at, p.status
                 FROM `categories` c, `posts` p, `users` u
                 WHERE c.id = p.category_id AND p.user_id = u.id AND u.id = " . $_SESSION['id'];
         $data = $this->get_data($sql);
