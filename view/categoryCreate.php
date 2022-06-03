@@ -1,5 +1,4 @@
 <?php 
-    include '../connect.php';
     include('../include/header.php');
     include '../Categories.php';
 

@@ -1,5 +1,4 @@
 <?php
-    include ('connect.php');
     class User extends Database{
             function isDigits(string $s, int $minDigits = 9, int $maxDigits = 14): bool 
         {
@@ -262,7 +261,7 @@
         public function logout()
         {
             session_destroy();
-            var_dump($_SESSION);
+            // var_dump($_SESSION);
             if(!isset($_SESSION['role'])){
                 echo '<script>alert("Đăng xuất thành công");</script>';
                 echo '<script>window.location="index.php";</script>';

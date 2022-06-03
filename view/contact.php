@@ -1,4 +1,4 @@
-<? include('../include/heade.php') ?>
+<? include('../include/header.php') ?>
     <main>
         <div class="header-title">
             <h1>CONTACT US</h1>

@@ -1,6 +1,11 @@
 <!DOCTYPE HTML>
 <html>
-<?php session_start() ?>
+<?php
+if(!isset($_SESSION)) {
+    session_start();
+}
+include '../connect.php';
+?>
 
 <head>
 	<meta charset="UTF-8">
@@ -38,10 +43,10 @@
 								<ul style="height: unset;" class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
 									<li><a style="font-family: unset" class="dropdown-item" href="/edit/hoang-duc-1.html"><?php echo $_SESSION['username'] ?></a></li>
 									<?php if($_SESSION['role'] == 2):?>
-										<li><a style="font-family: unset" class="dropdown-item text-danger" href="/admin">Quản trị viên</a></li>
+										<li><a style="font-family: unset" class="dropdown-item text-danger" href="./userList.php">Quản trị viên</a></li>
 									<?php endif; ?>
 									<li><a style="font-family: unset" class="dropdown-item" href="/edit/hoang-duc-1.html">Thông tin cá nhân</a></li>
-									<li><a style="font-family: unset" class="dropdown-item" href="/edit/hoang-duc-1.html">Thiết lập</a></li>
+									<li><a style="font-family: unset" class="dropdown-item" href="../userUpdate.php">Thiết lập</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>

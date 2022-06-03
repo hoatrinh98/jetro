@@ -1,5 +1,4 @@
 <?php
-include ('connect.php');
 class Post extends Database
 {
     public function getCategoryIdByPost($id)
@@ -58,7 +57,7 @@ class Post extends Database
     public function getInfoPost()
     {
         $sql = "SELECT c.id 'category_id', c.name 'category_name', u.id 'user_id', u.username 'user_name', 
-                p.id, p.title, p.content, p.count_view, p.create_at, p.status
+                p.id, p.title, p.content, p.count_view, p.create_at, p.status, p.image
                 FROM `categories` c, `posts` p, `users` u
                 WHERE c.id = p.category_id AND p.user_id = u.id";
         $data = $this->get_data($sql);
@@ -76,11 +75,31 @@ class Post extends Database
     public function getInfoPostByStatus()
     {
         $sql = "SELECT c.id 'category_id', c.name 'category_name', u.id 'user_id', u.username 'user_name', 
-                p.id, p.title, p.content, p.count_view, p.create_at, p.status
+                p.id, p.title, p.content, p.count_view, p.create_at, p.status, p.image
                 FROM `categories` c, `posts` p, `users` u
                 WHERE c.id = p.category_id AND p.user_id = u.id AND p.status = 0";
         $data = $this->get_data($sql);
         return $data;
+    }
+
+    public function getInfoPostByStatus1()
+    {
+        $sql = "SELECT c.id 'category_id', c.name 'category_name', u.id 'user_id', u.username 'user_name', 
+                p.id, p.title, p.content, p.count_view, p.create_at, p.status, p.image
+                FROM `categories` c, `posts` p, `users` u
+                WHERE c.id = p.category_id AND p.user_id = u.id AND p.status = 1";
+        $data = $this->get_data($sql);
+        return $data;
+    }
+
+    public function getInfoPostById($id)
+    {
+        $sql = "SELECT c.id 'category_id', c.name 'category_name', u.id 'user_id', u.username 'user_name', 
+                p.id, p.title, p.content, p.count_view, p.create_at, p.status, p.image
+                FROM `categories` c, `posts` p, `users` u
+                WHERE c.id = p.category_id AND p.user_id = u.id AND p.status = 1 AND p.id = " . $id;
+        $data = $this->get_data($sql);
+        return $data[0];
     }
     
     public function uploadImagePost($data)
@@ -104,7 +123,7 @@ class Post extends Database
         }
         
         
-        $path = '../img/imagePost/' . $data . '.' . $extension;
+        $path = '../img/ImagePost/' . $data . '.' . $extension;
 
         $is_upload_success = move_uploaded_file($temp_name, $path);
 

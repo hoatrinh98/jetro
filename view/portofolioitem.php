@@ -1,18 +1,30 @@
-<?php include('../include/header.php') ?>
+<?php include('../include/header.php');
+	include('../Posts.php');
+
+	$get_data = new Post();
+
+	$post = $get_data->getInfoPostById($_GET['id']);
+	// var_dump($posts);
+
+
+?>
 	<main>
-		<!-- thanh header -->
+
 		<div class="header-title">
-			<h1>SLIDER PLUGIN</h1>
+			<h1><?php echo $post['title'] ?></h1>
 		</div>
-		<!-- content -->
 		<div class="portofolio-item">
 				<div>
-					<img src="../img/images/slider6.jpg" alt="" />
+					<img src="<?php echo '../img/ImagePost/' . $post['image'] ?>" width="921px" height="391px" alt="" />
 				</div>
 				<div >
-					<p>Praesent in dictum est. Fusce scelerisque nibh in sem rhoncus semper. Sed nisi risus, adipiscing eu mollis luctus, elementum at lacus. Suspendisse porta, eros eu fermentum molestie, purus erat hendrerit tellus, sodales rhoncus justo sapien in lacus. Morbi tincidunt lorem vitae turpis molestie lacinia. Vivamus nec nulla turpis. Ut placerat lacus aliquet ipsum lobortis vitae varius felis ullamcorper. Maecenas pharetra imperdiet dolor eu pulvinar.</p><br>
-					<p>Nullam justo quam, tristique sit amet facilisis non, commodo vel nunc. In quam libero, pulvinar et scelerisque vitae, molestie euismod justo. Donec tortor magna, vehicula in facilisis sit amet, ultricies nec massa. Curabitur at tincidunt sem. Mauris nulla justo, ornare in condimentum non, eleifend at nibh. Nullam mattis faucibus odio, sit amet aliquam urna lobortis sit amet. Aliquam mauris elit, consectetur vestibulum tincidunt vitae, sodales vel libero. Phasellus malesuada, metus vitae lobortis sodales, diam lacus lacinia metus, id sodales ante urna in urna. Duis elementum luctus mi, et euismod leo aliquet at. Proin justo est, elementum in posuere ac, pharetra non ipsum. Phasellus sit amet nisi quis lacus hendrerit elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi bibendum enim ut sapien pellentesque lacinia. Aliquam fringilla sem eget sem pulvinar egestas. Duis congue lorem id mi scelerisque gravida. Ut in lacus libero.</p> <br> <br>
-				</div>	
+					<?php echo $post['content'] ?>
+				</div>
+				<div class="blog-post-meta">
+						<h3><?php echo $post['user_name'] ?></h3>
+						<h4><b><?php echo DATE_FORMAT(date_create($post['create_at']), "M d, Y") ?></b></h4>
+				</div>
+
 				<!--recent-works   -->
 				<div class="title"><span>RECENTED ITEMS</span></div>
 				<!-- item mage (giống index)-->
