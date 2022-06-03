@@ -8,7 +8,7 @@ class Database
 	protected $host 			= 'localhost';
 	protected $username 		= 'root';
 	protected $password 		= '';
-	protected $dbname 			= 'zerotype';
+	protected $dbname 			= 'hoatrinh';
 
 	public function __construct() {}
 
@@ -83,7 +83,6 @@ class Database
 		$result = [];
 
 		$this->connect();
-        // var_dump($sql);
 		$query = $this->_connection->query($sql);
 
 		if(!$query)

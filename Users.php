@@ -226,5 +226,12 @@
             }
 
         }
+
+        public function login($numPhone, $password)
+        {
+            $numP = $this->getInfoByNumPhone($numPhone);
+            var_dump($numP);
+        }
+
     }
 ?>
