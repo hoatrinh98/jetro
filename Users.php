@@ -138,23 +138,23 @@
 
         public function deleteUser($id)
         {
-             $this->delete('users', 'id= ' . $id);
-             echo "Xóa";
-            // if($delete){
-            //     echo    '<script>
-            //                 alert("Delete is SUCCESS !");
-            //                 window.location = ("userList.php");
-            //             </script>';
-            //     return;
-            // }
-            // else{
-            //     // echo    '<script>
-            //     //             alert("Delete is not SUCCESS !");
-            //     //             window.location = ("userDelete.php");
-            //     //         </script>';
-            //     echo "Xóa không thành công!!!";
-            //     return;
-            // }
+            $delete = $this->delete('users', 'id= ' . $id);
+            
+            if($delete){
+                echo    '<script>
+                            alert("Delete is SUCCESS !");
+                            window.location = ("userList.php");
+                        </script>';
+                return;
+            }
+            else{
+                // echo    '<script>
+                //             alert("Delete is not SUCCESS !");
+                //             window.location = ("userDelete.php");
+                //         </script>';
+                echo "Xóa không thành công!!!";
+                return;
+            }
         }
 
         public function updateUser($data, $id)
