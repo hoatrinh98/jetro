@@ -2,9 +2,10 @@
     include('../include/header.php');
     include('../Users.php');
 
+    $user = new User();
+    $data = [];
     if(isset($_POST['sub-login'])) {
-        $user = new User();
-        $user->login($_POST['txt-num-phone'], $_POST['txt-pass']);
+        $data = $user->login($_POST['txt-num-phone'], $_POST['txt-pass']);
     }
 
 
@@ -20,6 +21,7 @@
         name ="txt-num-phone" 
         type="text" 
         class="form-control"  
+        value="<?php echo count($data) > 0 ? $data['num_phone'] : ''; ?>"
         aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
@@ -27,7 +29,8 @@
     <input 
         name="txt-pass" 
         type="password" 
-        class="form-control" 
+        class="form-control"
+        value="<?php echo count($data) > 0 ? $data['password'] : ''; ?>" 
         id="exampleInputPassword1"  >
     <label onclick="hideShowPw(this)">show password</label>
   </div>

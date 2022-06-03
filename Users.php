@@ -45,11 +45,11 @@
             $allowed = ['png', 'jpg', 'jpeg', 'jfif'];
 
             if(!in_array($extension, $allowed)){
-                return 'File must have png, jpg, jpeg, ifif format ';
+                return 'File phải có định dạng png, jpg, jpeg, ifif ';
             }
 
             if($file_size >= 5000000){
-                return 'File size is too big !';
+                return 'Dung lượng file quá lớn !';
             }
             
             
@@ -58,7 +58,7 @@
             $is_upload_success = move_uploaded_file($temp_name, $path);
 
             if(!$is_upload_success){
-                return 'Upload avatar not success !';
+                return 'Thêm ảnh thất bại !';
             }
 
             return '';
@@ -72,7 +72,6 @@
             $email = trim($data['email']);
             $phone = trim($data['phone']);
             $pass = trim($data['password']);
-            $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
             $gender = trim($data['gender']);
 
             if(empty($name) || empty($email) || empty($fullName) || empty($phone) || empty($pass) || empty($gender)){
@@ -119,10 +118,9 @@
                 'num_phone'             => $phone,
                 'image'                 => $image,
                 'gender'                => $gender,
-                'password_hash'         => $pass_hash,
                 'permission'            => 1,
             ];
-            
+
             $insert = $this->insert('users', $user);
 
             if($insert){
@@ -157,24 +155,13 @@
             // }
         }
 
-        public function updateUser($data, $id)
-        {
-            if(!strlen($_FILES['image']['name'])){
-                $this->updateUserNoImage($data, $userId);
-            }
-            else{
-                $this->updateUserImage($data, $userId);
-            }
-        }
-
-        public function updateUserImage($data, $userId)
+        public function updateUser($data, $userId)
         {
             $name = trim($data['name']);
             $fullName = trim($data['full-name']);
             $email = trim($data['email']);
             $phone = trim($data['phone']);
             $pass = trim($data['password']);
-            $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
             $gender = trim($data['gender']);
 
             if(empty($name) || empty($email) || empty($fullName) || empty($phone) || empty($pass) || empty($gender)){
@@ -196,10 +183,10 @@
                 return;
             }
 
-            if(count($this->getInfoByNumPhone($phone)) > 1) {
-                echo '<script>alert("Number phone is exists !")</script>';
-                return;
-            }
+            // if(count($this->getInfoByNumPhone($phone)) > 0) {
+            //     echo '<script>alert("Number phone is exists !")</script>';
+            //     return;
+            // }
 
             $upAvatar = $this->uploadAvatar($name);
                 if (strlen($upAvatar) > 0) {
@@ -216,7 +203,6 @@
                 'password_current'      => $pass,
                 'email'                 => $email,
                 'num_phone'             => $phone,
-                'password_hash'         => $pass_hash,
                 'image'                 => $image,
                 'gender'                => $gender,
                 'permission'            => 1,
@@ -227,78 +213,14 @@
             if($update){
                 echo    '<script>
                             alert("Update is SUCCESS !");
-                            window.location = "page1.php";
+                            window.location = ("userList.php");
                         </script>';
                 return;
             }
             else{
                 echo    '<script>
                             alert("Update is not SUCCESS !");
-                            window.location = "page1.php";
-                        </script>';
-                return;
-            }
-
-        }
-
-        public function updateUserNoImage($data, $userId)
-        {
-            $name = trim($data['name']);
-            $fullName = trim($data['full-name']);
-            $email = trim($data['email']);
-            $phone = trim($data['phone']);
-            $pass = trim($data['password']);
-            $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
-            $gender = trim($data['gender']);
-
-            if(empty($name) || empty($email) || empty($fullName) || empty($phone) || empty($pass) || empty($gender)){
-
-                echo "<script>alert('You have to enter infomation!!!')</script>";
-                return;
-            }
-
-            $isNum = is_numeric($phone) ;
-            if(!$isNum){
-                echo "<script>alert('Number Phone does not contain character !!!')</script>";
-                return;
-            }
-
-
-            $isPw = strpos($pass, ' ');
-            if($isPw){
-                echo "<script>alert('Password does not contain spaces !!!')</script>";
-                return;
-            }
-
-            if(count($this->getInfoByNumPhone($phone)) > 1) {
-                echo '<script>alert("Number phone is exists !")</script>';
-                return;
-            }
-
-            $user = [
-                'username'              => $name,
-                'full_name'             => $fullName,
-                'password_current'      => $pass,
-                'email'                 => $email,
-                'num_phone'             => $phone,
-                'password_hash'         => $pass_hash,
-                'gender'                => $gender,
-                'permission'            => 1,
-            ];
-
-            $update = $this->update('users', $user, 'id = "'. $userId . '"');
-
-            if($update){
-                echo    '<script>
-                            alert("Update is SUCCESS !");
-                            window.location = "page1.php";
-                        </script>';
-                return;
-            }
-            else{
-                echo    '<script>
-                            alert("Update is not SUCCESS !");
-                            window.location = "page1.php";
+                            window.location = ("userList.php");
                         </script>';
                 return;
             }
@@ -308,7 +230,27 @@
         public function login($numPhone, $password)
         {
             $numP = $this->getInfoByNumPhone($numPhone);
-            var_dump($numP);
+            if(!count($numP)) {
+                echo '<script>alert("Number phone not exist !!!")</script>';
+                return [
+                    'num_phone' => $numPhone,
+                    'password' => $password
+                ];
+            }
+
+            if(!password_verify($password, $numP[0]['password_hash'])) {
+                echo '<script>alert("Incorrect password !!!")</script>';
+                return [
+                    'num_phone' => $numPhone,
+                    'password' => $password
+                ];
+            }
+            $_SESSION['role'] = $numP[0]['permission'];
+            // $_SESSION['username'] = $numP[0]['permission'];
+            $_SESSION['id'] = $numP[0]['id'];
+
+            echo '<script>alert("Login success !!!"); window.location="./page1.php";</script>';
+                return;
         }
 
     }
