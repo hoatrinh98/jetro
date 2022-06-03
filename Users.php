@@ -136,23 +136,23 @@
 
         public function deleteUser($id)
         {
-             $this->delete('users', 'id= ' . $id);
-             echo "Xóa";
-            // if($delete){
-            //     echo    '<script>
-            //                 alert("Delete is SUCCESS !");
-            //                 window.location = ("userList.php");
-            //             </script>';
-            //     return;
-            // }
-            // else{
-            //     // echo    '<script>
-            //     //             alert("Delete is not SUCCESS !");
-            //     //             window.location = ("userDelete.php");
-            //     //         </script>';
-            //     echo "Xóa không thành công!!!";
-            //     return;
-            // }
+            $delete = $this->delete('users', 'id= ' . $id);
+            
+            if($delete){
+                echo    '<script>
+                            alert("Delete is SUCCESS !");
+                            window.location = ("userList.php");
+                        </script>';
+                return;
+            }
+            else{
+                // echo    '<script>
+                //             alert("Delete is not SUCCESS !");
+                //             window.location = ("userDelete.php");
+                //         </script>';
+                echo "Xóa không thành công!!!";
+                return;
+            }
         }
 
         public function updateUser($data, $userId)
@@ -226,5 +226,32 @@
             }
 
         }
+
+        public function login($numPhone, $password)
+        {
+            $numP = $this->getInfoByNumPhone($numPhone);
+            if(!count($numP)) {
+                echo '<script>alert("Number phone not exist !!!")</script>';
+                return [
+                    'num_phone' => $numPhone,
+                    'password' => $password
+                ];
+            }
+
+            if(!password_verify($password, $numP[0]['password_hash'])) {
+                echo '<script>alert("Incorrect password !!!")</script>';
+                return [
+                    'num_phone' => $numPhone,
+                    'password' => $password
+                ];
+            }
+            $_SESSION['role'] = $numP[0]['permission'];
+            // $_SESSION['username'] = $numP[0]['permission'];
+            $_SESSION['id'] = $numP[0]['id'];
+
+            echo '<script>alert("Login success !!!"); window.location="./page1.php";</script>';
+                return;
+        }
+
     }
 ?>
