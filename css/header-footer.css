@@ -45,6 +45,11 @@ header nav ul li a {
     padding: 10px 15px;
     color: #bcbcbc
 }
+header nav ul li a i{
+    /* color: red !important;  */
+    font-size: 20px;
+    line-height: 80px;
+}
 header nav ul li a:hover,  a.active {
     color: #e8663c;
 }
@@ -115,3 +120,64 @@ footer .content p {
 footer .content .pharagraph{
     padding: 30px 0 30px 10px;
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.815);
+    z-index: 9999;
+    transition: all 1.5s ease;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background: none;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-family: "Bebas";
+    font-size: 16px;
+    /* padding: 10px 15px; */
+    color: #bcbcbc
+}
+.dropbtn span {
+    color: red;
+    font-style: italic;
+  font-size: 13px;
+}
+/* Dropdown button on hover & focus */
+/* .dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+} */
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
