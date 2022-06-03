@@ -5,7 +5,7 @@
 
 	$post = $get_data->getInfoPostById($_GET['id']);
 	// var_dump($posts);
-
+    $postRecent = $get_data->getPostByCategory();
 
 ?>
 	<main>
@@ -29,35 +29,23 @@
 				<div class="title"><span>RECENTED ITEMS</span></div>
 				<!-- item mage (giống index)-->
 				<div class="recent-works">
-					<div class="item1">
-						<img src="../img/images/image1.jpg" alt="">
-						<div class="blog-post-meta">
-							<h3>POST TITLE APPEAR HERE</h3>
-							<h4>JUNE 15,2013</h4>
-						</div>
-					</div>
-					<div class="item2">
-						<img src="../img//images/image2.jpg" alt="">
-						<div class="blog-post-meta">
-							<h3>POST TITLE APPEAR HERE</h3>
-							<h4>JUNE 15,2013</h4>
-						</div>
-					</div>
-					<div class="item3">
-						<img src="../img/images/image3.jpg" alt="">
-						<div class="blog-post-meta">
-							<h3>POST TITLE APPEAR HERE</h3>
-							<h4>JUNE 15,2013</h4>
-						</div>
-					</div>
-					<div class="item4">
-						<img src="../img/images/image4.jpg" alt="">
-						<div class="blog-post-meta">
-							<h3>POST TITLE APPEAR HERE</h3>
-							<h4>JUNE 15,2013</h4>
-						</div>
-					</div>
+                <?php foreach($postRecent as $post): ?>
+                <div style="height: 300px;" class="item1" onclick="myHand(<?php echo $post['id'] ?>)" >
+                    <img src="../img/ImagePost/<?php echo $post['image'] ?>" alt="">
+                    <div class="blog-post-meta">
+                        <h3><?php echo $post['title'] ?></h3>
+                        <h4><?php echo $post['create_at'] ?></h4>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+					
 				</div>
 		</div>
 	</main>
+
+    <script>
+    function myHand(id) {
+        window.location = "./portofolioitem.php?id=" + id;
+    }
+</script>
 <? include('../include/footer.php') ?>
