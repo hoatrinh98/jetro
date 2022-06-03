@@ -5,9 +5,9 @@
     $get_data = new User();
 
     $user = $get_data->getInfoUserById($_GET['userId']);
-    echo '<pre>';
-    print_r($user);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($user);
+    // echo '</pre>';
     if(isset($_POST['sub-update'])){
         $get_data->updateUser($_POST, $_GET['userId']);
         // var_dump($_POST);
