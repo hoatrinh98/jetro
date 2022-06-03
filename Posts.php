@@ -9,6 +9,11 @@ class Post extends Database{
         return;
     }
 
+    public function getInfoPostByPostId()
+    {
+        
+    }
+
     // public function getShopByUserId()
     // {
     //     $sql = "SELECT * FROM shops WHERE user_id = " . $_SESSION['id'] . " AND id = " . $_GET['id'];
