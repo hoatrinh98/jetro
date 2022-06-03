@@ -27,7 +27,7 @@
                 <input type="email" class="form-control" name="email"  required />
 
                 <label>Phone Number</label>
-                <input type="text" class="form-control" name="phone" required />
+                <input type="text" class="form-control" name="phone" maxlength=10 required />
 
                 <label>Gender</label><br>
                 <select name = "gender" style="width:100%; height:38px; border:1px solid #ced4da; border-radius: 0.25rem; " class="form-select" aria-label="Default select example">
