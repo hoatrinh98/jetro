@@ -8,7 +8,7 @@ class Post extends Database
 
     public function getPostByCategory()
     {
-        $query = " SELECT * FROM posts P WHERE category_id = " . $this->getCategoryIdByPost($_GET['id'])['category_id'];
+        $query = " SELECT * FROM posts  WHERE status = 1 AND category_id = " . $this->getCategoryIdByPost($_GET['id'])['category_id'];
         return $this->get_data($query);
     }
 

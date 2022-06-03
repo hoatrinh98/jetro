@@ -263,8 +263,8 @@
             session_destroy();
             // var_dump($_SESSION);
             if(!isset($_SESSION['role'])){
-                echo '<script>alert("Đăng xuất thành công");</script>';
-                echo '<script>window.location="index.php";</script>';
+                echo '<script>alert("Đăng xuất thành công");window.location="./index.php";</script>';
+                // echo '<script>window.location="index.php";</script>';
                 return;
             }
 
